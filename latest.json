@@ -1,7 +1,7 @@
 {
   "meta": {
     "asof_date": "2026-06-17",
-    "exported_at": "2026-06-17 16:30:02"
+    "exported_at": "2026-06-17 16:40:25"
   },
   "data": [
     {
@@ -6803,7 +6803,7 @@
       "Sortino": 5.99,
       "MaxDD%": 18.32,
       "YTD_Growth%": 14.05,
-      "IVRank": 0.4115,
+      "IVRank": 0.4114,
       "iv_tag": "MED-IV",
       "avg_dv_M": 278.78,
       "Liq_State": "LIQUID",
@@ -7209,7 +7209,7 @@
       "Sortino": 1.39,
       "MaxDD%": 16.7,
       "YTD_Growth%": 12.37,
-      "IVRank": 0.1849,
+      "IVRank": 0.1848,
       "iv_tag": "LOW-IV",
       "avg_dv_M": 156.95,
       "Liq_State": "LIQUID",
@@ -11182,7 +11182,7 @@
       "Sortino": 1.85,
       "MaxDD%": 8.19,
       "YTD_Growth%": 13.46,
-      "IVRank": 0.8917,
+      "IVRank": 0.8916,
       "iv_tag": "HIGH-IV",
       "avg_dv_M": 9.71,
       "Liq_State": "THIN",
@@ -16257,7 +16257,7 @@
       "Sortino": -0.65,
       "MaxDD%": 10.96,
       "YTD_Growth%": 14.2,
-      "IVRank": 0.5771,
+      "IVRank": 0.5772,
       "iv_tag": "MED-IV",
       "avg_dv_M": 1726.29,
       "Liq_State": "LIQUID",
@@ -16460,7 +16460,7 @@
       "Sortino": -0.56,
       "MaxDD%": 8.07,
       "YTD_Growth%": 9.49,
-      "IVRank": 0.7474,
+      "IVRank": 0.7473,
       "iv_tag": "HIGH-IV",
       "avg_dv_M": 185.86,
       "Liq_State": "LIQUID",
