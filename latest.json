@@ -1,7 +1,7 @@
 {
   "meta": {
     "asof_date": "2026-06-17",
-    "exported_at": "2026-06-17 16:40:25"
+    "exported_at": "2026-06-17 16:58:02"
   },
   "data": [
     {
@@ -6803,7 +6803,7 @@
       "Sortino": 5.99,
       "MaxDD%": 18.32,
       "YTD_Growth%": 14.05,
-      "IVRank": 0.4114,
+      "IVRank": 0.4115,
       "iv_tag": "MED-IV",
       "avg_dv_M": 278.78,
       "Liq_State": "LIQUID",
@@ -16257,7 +16257,7 @@
       "Sortino": -0.65,
       "MaxDD%": 10.96,
       "YTD_Growth%": 14.2,
-      "IVRank": 0.5772,
+      "IVRank": 0.5771,
       "iv_tag": "MED-IV",
       "avg_dv_M": 1726.29,
       "Liq_State": "LIQUID",
