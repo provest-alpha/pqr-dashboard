@@ -4,7 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Provest VCP Scanner</title>
-<link rel="icon" href="./logo.png" type="image/png">
+<!-- Favicon — all browsers & platforms -->
+<link rel="icon"             href="./logo.png" type="image/png">
+<link rel="shortcut icon"    href="./logo.png" type="image/png">
+<link rel="apple-touch-icon" href="./logo.png">
+<meta name="theme-color"     content="#ff0066"><!-- Chrome tab colour (VCP pink) -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
 /* ═══════════════════════════════════════════════
@@ -92,7 +96,30 @@ button,select,input{font-family:inherit;font-size:var(--fs);}
 .fsp:hover{border-color:rgba(255,255,255,.6);color:#fff;}
 .fsp.on{background:rgba(255,255,255,.25);border-color:rgba(255,255,255,.7);color:#fff;}
 
-/* Dark toggle */
+/* ── Header collapse ── */
+#hdr{ position:relative; }   /* anchor for abs-positioned button */
+#hdr-body{
+  display:flex; align-items:center; flex-wrap:wrap;
+  gap:10px 16px; width:100%;
+  max-height:200px; overflow:hidden;
+  transition:max-height .25s ease, opacity .2s ease;
+  opacity:1;
+}
+#hdr-body.collapsed{ max-height:0; opacity:0; pointer-events:none; }
+#hdr-collapse{
+  position:absolute; right:10px; top:8px; z-index:310;
+  background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.2);
+  color:rgba(255,255,255,.65); border-radius:4px; cursor:pointer;
+  font-size:10px; padding:2px 7px; font-family:inherit; line-height:1.4;
+  transition:all var(--dur);
+}
+#hdr-collapse:hover{ background:rgba(255,255,255,.22); color:#fff; }
+#hdr-collapsed-bar{
+  display:none; width:100%; height:3px;
+  background:linear-gradient(90deg,rgba(255,255,255,.7) 0%,rgba(255,255,255,.15) 100%);
+}
+#hdr.collapsed #hdr-collapsed-bar{ display:block; }
+#hdr.collapsed{ min-height:7px; padding:0 20px; }
 .mode-btn{width:32px;height:18px;border-radius:9px;border:none;cursor:pointer;
           background:rgba(255,255,255,.25);position:relative;transition:background var(--dur);}
 .mode-btn::after{content:'';position:absolute;top:3px;left:3px;width:12px;height:12px;
@@ -352,6 +379,10 @@ tr.r-sell td{background:rgba(220,38,38,.04) !important;}
 
 <!-- ── HEADER ── -->
 <header id="hdr">
+  <button id="hdr-collapse" onclick="toggleHeader()" title="Collapse / expand header">▲</button>
+  <div id="hdr-collapsed-bar"></div>
+  <div id="hdr-body">
+
   <div class="hdr-brand">
     <img class="logo-img" src="./logo.png" alt="Provest" onerror="this.style.display='none'">
     <div>
@@ -390,6 +421,8 @@ tr.r-sell td{background:rgba(220,38,38,.04) !important;}
       <span id="ticker-cnt">—</span> tickers
     </div>
   </div>
+
+  </div><!-- /#hdr-body -->
 </header>
 
 <div id="tip"></div>
@@ -1028,6 +1061,16 @@ function hideTip(){tip.style.display='none';}
 
 // ── Theme / font size ─────────────────────────────────────────────
 function toggleDark(){const d=document.documentElement.classList.toggle('dark');localStorage.setItem('pq-dark',d?'1':'0');}
+
+function toggleHeader(){
+  const hdr  = document.getElementById('hdr');
+  const body = document.getElementById('hdr-body');
+  const btn  = document.getElementById('hdr-collapse');
+  const collapsed = hdr.classList.toggle('collapsed');
+  body.classList.toggle('collapsed', collapsed);
+  btn.textContent = collapsed ? '▼' : '▲';
+  localStorage.setItem('pq-hdr', collapsed ? '0' : '1');
+}
 function setFS(s){
   const b=document.getElementById('body');
   b.className=b.className.replace(/\bfs-\w+/,'')+' fs-'+s;
@@ -1040,6 +1083,17 @@ function setFS(s){
 (function init(){
   const fs=localStorage.getItem('pq-fs')||'m';setFS(fs);
   if(localStorage.getItem('pq-dark')==='1')document.documentElement.classList.add('dark');
+  // Restore header collapse state (shared key pq-hdr with panel.html)
+  if(localStorage.getItem('pq-hdr')==='0'){
+    const hdr=document.getElementById('hdr');
+    const body=document.getElementById('hdr-body');
+    const btn=document.getElementById('hdr-collapse');
+    if(hdr&&body&&btn){
+      hdr.classList.add('collapsed');
+      body.classList.add('collapsed');
+      btn.textContent='▼';
+    }
+  }
   loadData();
 })();
 </script>
